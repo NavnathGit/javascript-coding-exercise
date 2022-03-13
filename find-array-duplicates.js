@@ -36,3 +36,26 @@ const findDuplicate2 = function (array) {
 //const array = [2, 2, 3, 1, 2, 1, 3]
 const array = ["Banana", "Orange", "Apple", "Mango", "Apple"];
 console.log(findDuplicate2(array));
+
+const removeDuplicate = function (array) {
+    newArray = [];
+
+    if (array.length === 0) {
+        return "Provided Array is empty"
+    }
+
+    if (array.length === 1) {
+        return "Array is having only one element in it"
+    }
+
+    for (let i = 0; i < array.length; i++) {
+        if (!newArray.includes(array[i])) {
+            newArray.push(array[i]);
+        }
+    }
+    newArray.sort((a, b) => a - b)
+    return newArray;
+}
+
+const originalArray = [2, 2, 3, 1, 2, 1, 3]
+console.log(removeDuplicate(originalArray));
