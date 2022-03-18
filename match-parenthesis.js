@@ -5,6 +5,10 @@ const isValid = function (s) {
         return "Please provide valid String"
     }
 
+    if (s.length % 2 !== 0) {
+        return isValidString;
+    }
+
     if (s.length === 2) {
         if (s === "()" || s === "{}" || s === "[]") {
             isValidString = true;
@@ -21,18 +25,24 @@ const isValid = function (s) {
                 case "(":
                     if (tempArray[i + 1] === ")") {
                         isValidString = true;
+                    } else {
+                        isValidString = false;
                     }
                     break;
 
                 case "{":
                     if (tempArray[i + 1] === "}") {
                         isValidString = true;
+                    } else {
+                        isValidString = false;
                     }
                     break;
 
-                case "{":
-                    if (tempArray[i + 1] === "}") {
+                case "[":
+                    if (tempArray[i + 1] === "]") {
                         isValidString = true;
+                    } else {
+                        isValidString = false;
                     }
                     break;
 
@@ -44,4 +54,4 @@ const isValid = function (s) {
     return isValidString;
 };
 
-console.log(isValid("()"))
+console.log(isValid("[](){}"))
