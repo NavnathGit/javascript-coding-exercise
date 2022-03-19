@@ -37,6 +37,7 @@ const findDuplicate2 = function (array) {
 const array = ["Banana", "Orange", "Apple", "Mango", "Apple"];
 console.log(findDuplicate2(array));
 
+//Remove Duplicate
 const removeDuplicate = function (array) {
     newArray = [];
 
