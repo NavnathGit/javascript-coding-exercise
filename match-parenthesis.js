@@ -1,57 +1,33 @@
 const isValid = function (s) {
-
-    let isValidString = false;
     if (s.length < 2) {
-        return "Please provide valid String"
+        return false
     }
 
     if (s.length % 2 !== 0) {
-        return isValidString;
+        return false;
     }
 
     if (s.length === 2) {
         if (s === "()" || s === "{}" || s === "[]") {
-            isValidString = true;
-            //console.log("I have returned value")
-            return isValidString;
+            return true;
         }
     }
 
-    const tempArray = [...s];
+    const left = [];
+    const legend = {
+        '(': ')',
+        '{': '}',
+        '[': ']'
+    };
 
     for (let i = 0; i < s.length; i++) {
-        if (((i + 1) % 2) != 0) {
-            switch (s[i]) {
-                case "(":
-                    if (tempArray[i + 1] === ")") {
-                        isValidString = true;
-                    } else {
-                        isValidString = false;
-                    }
-                    break;
-
-                case "{":
-                    if (tempArray[i + 1] === "}") {
-                        isValidString = true;
-                    } else {
-                        isValidString = false;
-                    }
-                    break;
-
-                case "[":
-                    if (tempArray[i + 1] === "]") {
-                        isValidString = true;
-                    } else {
-                        isValidString = false;
-                    }
-                    break;
-
-                default:
-                    isValidString = false;
-            }
+        if (s[i] === '(' || s[i] === '{' || s[i] === '[') {
+            left.push(s[i]);
+        } else if (legend[left.pop()] !== s[i]) {
+            return false;
         }
     }
-    return isValidString;
+    return left.length ? false : true;
 };
 
 console.log(isValid("[](){}"))
